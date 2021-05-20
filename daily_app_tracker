@@ -1,0 +1,20 @@
+SELECT
+[athena_to_s3_scholar_data.csv].childid,
+[athena_to_s3_scholar_data.csv].firstname, [athena_to_s3_scholar_data.csv].lastname, [athena_to_s3_scholar_data.csv].appnum,
+[athena_to_s3_scholar_data.csv].isell,
+[athena_to_s3_scholar_data.csv].enrolledschoolname,
+[athena_to_s3_scholar_data.csv].gender,
+[athena_to_s3_scholar_data.csv].currentschool,
+# school district
+[athena_to_s3_scholar_data.csv].gradeabbrev,
+[athena_to_s3_scholar_data.csv].appdate,
+# application month
+# enrolled sibling
+# applying siblings
+# zoned school code
+[athena_to_s3_responsible_adults.csv].firstname, [athena_to_s3_responsible_adults.csv].lastname, [athena_to_s3_responsible_adults.csv].email, [athena_to_s3_responsible_adults.csv].street, [athena_to_s3_responsible_adults.csv].apartmentnumber, [athena_to_s3_responsible_adults.csv].city, [athena_to_s3_responsible_adults.csv].state, [athena_to_s3_responsible_adults.csv].zip,
+[athena_to_s3_responsible_adults.csv].homephone, [athena_to_s3_responsible_adults.csv].cellphone, [athena_to_s3_scholar_data.csv].applicationstatus, [athena_to_s3_scholar_data.csv].bestcurrentstatus, [athena_to_s3_scholar_data.csv].acceptedschoolcode
+FROM [athena_to_s3_scholar_data.csv]
+LEFT JOIN [athena_to_s3_responsible_adults.csv] ON [athena_to_s3_scholar_data.csv].familyid = [athena_to_s3_responsible_adults.csv].familyid
+WHERE ([athena_to_s3_scholar_data.csv].bestcurrentstatus = 'Accepted' OR [athena_to_s3_scholar_data.csv].bestcurrentstatus = 'Likely') AND ([athena_to_s3_scholar_data.csv].applicationstatus = 'Accepted' OR [athena_to_s3_scholar_data.csv].applicationstatus = 'Waitlisted')
+ORDER BY [athena_to_s3_responsible_adults.csv].lastname;
