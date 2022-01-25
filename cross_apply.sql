@@ -8,8 +8,6 @@ SELECT
 	[athena_to_s3_scholar_data.csv].highestrankschoolname,
 	[athena_to_s3_scholar_data.csv].applyingtoschoolany,
 	[athena_to_s3_scholar_data.csv].adminentered,
-	[athena_to_s3_scholar_data.csv].enrolledschoolname,
-	[athena_to_s3_scholar_data.csv].enrollverified,
 	[athena_to_s3_scholar_data.csv].highestrankschoolname,
 	[athena_to_s3_scholar_data.csv].responsibleadultid,
 	[athena_to_s3_responsible_adults.csv].firstname AS parentfirstname,
