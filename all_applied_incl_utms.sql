@@ -1,4 +1,5 @@
 SELECT 
+	[athena_to_s3_scholar_data.csv].childid,
 	[athena_to_s3_scholar_data.csv].appdate,
 	[athena_to_s3_responsible_adults.csv].email,
 	[athena_to_s3_scholar_data.csv].applicationstatus,
