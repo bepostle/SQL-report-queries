@@ -13,9 +13,9 @@ SELECT
 	[athena_to_s3_enrolled_siblings.csv].gradeabbrev AS "grade enrolled sibling",
 	[athena_to_s3_enrolled_siblings.csv].sibling_childid,
 	[athena_to_s3_scholar_data.csv].responsibleadultid,
-FROM [athena_to_s3_scholar_data.csv]
-LEFT JOIN [athena_to_s3_enrolled_siblings.csv]
-ON [athena_to_s3_scholar_data.csv].responsibleadultid = [athena_to_s3_enrolled_siblings.csv].responsibleadultid
+FROM [CSV1].[athena_to_s3_scholar_data.csv]
+LEFT JOIN [CSV1].[athena_to_s3_enrolled_siblings.csv]
+ON [CSV1].[athena_to_s3_scholar_data.csv].responsibleadultid = [CSV1].[athena_to_s3_enrolled_siblings.csv].responsibleadultid
 WHERE [athena_to_s3_enrolled_siblings.csv].enrolledschoolcode IS NOT NULL
 AND [athena_to_s3_scholar_data.csv].isapplying = 1
 AND [athena_to_s3_scholar_data.csv].applicationstatus NOT LIKE 'Closed%'
