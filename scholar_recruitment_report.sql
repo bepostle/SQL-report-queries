@@ -5,6 +5,7 @@ SELECT
 	[gradeabbrev],
 	[highestrankschoolname],
 	[bestcurrentstatus],
+	[firstacceptdate],
 	[source],
 FROM [CSV1].[athena_to_s3_scholar_data.csv]
 WHERE [applicationstatus] != 'Closed - Duplicate' AND
