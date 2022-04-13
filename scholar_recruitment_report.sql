@@ -13,4 +13,4 @@ WHERE [applicationstatus] != 'Closed - Duplicate' AND
 [applicationstatus] != 'Closed - Test App' AND 
 [applicationstatus] != 'Closed - No Proof' AND
 [applicationstatus] != 'Closed - Mistakenly Applied'
-ORDER BY [appdate];
+ORDER BY [appdate] DESC;
