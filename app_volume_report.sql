@@ -1,5 +1,5 @@
 SELECT 
-	[athena_to_s3_scholar_data.csv].appdate,
+	LEFT([athena_to_s3_scholar_data.csv].appdate, 10) AS "appdate",
 	[athena_to_s3_scholar_data.csv].appnum,
 	[athena_to_s3_scholar_data.csv].applicationstatus,
 	[athena_to_s3_scholar_data.csv].gradeabbrev,
