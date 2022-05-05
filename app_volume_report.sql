@@ -18,6 +18,7 @@ SELECT
 	[athena_to_s3_responsible_adults.csv].state,
 	[athena_to_s3_responsible_adults.csv].schooldistrict,
 	[athena_to_s3_scholar_data.csv].referralsource,
+	[athena_to_s3_scholar_data.csv].acceptedschoolcode,
 FROM [CSV1].[athena_to_s3_scholar_data.csv]
 LEFT JOIN [CSV1].[athena_to_s3_responsible_adults.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].responsibleadultid = [CSV1].[athena_to_s3_responsible_adults.csv].responsibleadultid
 WHERE [athena_to_s3_scholar_data.csv].applicationstatus != 'Closed - Duplicate' AND
