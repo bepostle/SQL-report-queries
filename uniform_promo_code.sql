@@ -1,6 +1,12 @@
 SELECT 
 	[appnum] AS "Conf",
-	CONCAT([appnum], '-SA22') AS "Promo Code",
+	CASE
+		WHEN ([gender] LIKE 'Female') THEN CONCAT([appnum], '-SA221')
+		WHEN ([gender] LIKE 'Male' AND [gradeabbrev] LIKE 'K') THEN CONCAT([appnum], '-SA222')
+		WHEN ([gender] LIKE 'Male' AND [gradeabbrev] NOT LIKE 'K') THEN CONCAT([appnum], '-SA223')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND [gradeabbrev] LIKE 'K') THEN CONCAT([appnum], '-SA221', ' or ', [appnum], '-SA222')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND ([gradeabbrev] NOT LIKE 'K')) THEN CONCAT([appnum], '-SA221', ' or ', [appnum], '-SA223')
+		END AS "Promo Code",
 	[applicationstatus],
 	[currentaccepteddate],
 	[firstacceptdate],
