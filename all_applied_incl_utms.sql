@@ -1,10 +1,11 @@
 SELECT 
 	appdate,
 	appnum,
+	applicationstatus,
+	gradeabbrev,
 	childid,
 	[athena_to_s3_scholar_data.csv].responsibleadultid,
 	[athena_to_s3_responsible_adults.csv].email,
-	applicationstatus,
 	utm_source,
 	utm_campaign,
 	utm_term,
