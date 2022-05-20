@@ -14,4 +14,5 @@ FROM [CSV1].[athena_to_s3_scholar_data.csv]
 LEFT JOIN [CSV1].[athena_to_s3_responsible_adults.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].responsibleadultid = [CSV1].[athena_to_s3_responsible_adults.csv].responsibleadultid
 WHERE [athena_to_s3_scholar_data.csv].applicationstatus = 'Accepted'
 AND [gradeabbrev] = '4'
+AND [currentschool] NOT LIKE 'Success Academy%'
 ORDER BY [athena_to_s3_scholar_data.csv].currentaccepteddate DESC;
