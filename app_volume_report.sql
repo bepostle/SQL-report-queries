@@ -26,4 +26,4 @@ WHERE [athena_to_s3_scholar_data.csv].applicationstatus != 'Closed - Duplicate' 
 [athena_to_s3_scholar_data.csv].applicationstatus != 'Closed - Test App' AND 
 [athena_to_s3_scholar_data.csv].applicationstatus != 'Closed - No Proof' AND
 [athena_to_s3_scholar_data.csv].applicationstatus != 'Closed - Mistakenly Applied'
-ORDER BY [athena_to_s3_scholar_data.csv].appdate;
+ORDER BY [athena_to_s3_scholar_data.csv].appdate DESC;
