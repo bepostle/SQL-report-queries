@@ -17,7 +17,12 @@ SELECT
 	[email] AS "Guardian_Primary_Email",
 	[email] AS "Guardian_Email1",
 	[email2] AS "Guardian_Email2",
+	[athena_to_s3_responsible_adults.csv].[language],
+	[athena_to_s3_scholar_data.csv].[firstname] AS "Child_First_Name",
+	[athena_to_s3_scholar_data.csv].[lastname] AS "Child_Last_Name",
+	[enrolledschoolname],
 FROM [CSV1].[athena_to_s3_scholar_data.csv]
 LEFT JOIN [CSV1].[athena_to_s3_responsible_adults.csv] 
 ON [CSV1].[athena_to_s3_scholar_data.csv].responsibleadultid = [CSV1].[athena_to_s3_responsible_adults.csv].responsibleadultid
+WHERE [enrolledschoolname] LIKE ''
 ORDER BY [appnum] DESC;
