@@ -1,6 +1,6 @@
 SELECT 
-	CASE WHEN null IS NULL THEN '2022 - 2023' END AS "Application Year",
-	[athena_to_s3_scholar_data.csv].[appnum] AS "Conf",
+	CASE WHEN null IS NULL THEN '2022 - 2023' END AS "application year",
+	[athena_to_s3_scholar_data.csv].[appnum] AS "conf",
 	[athena_to_s3_scholar_data.csv].[childid],
 	[athena_to_s3_scholar_data.csv].[firstname] AS "child first name",
 	[athena_to_s3_scholar_data.csv].[lastname] AS "child last name",
@@ -55,7 +55,7 @@ SELECT
 	[athena_to_s3_responsible_adults.csv].[latitude],
 	[athena_to_s3_responsible_adults.csv].[longitude],
 	[athena_to_s3_responsible_adults.csv].[schooldistrict],
-	CASE WHEN [athena_to_s3_responsible_adults.csv].[zoneerror] = 'TRUE' THEN 1 ELSE 0 END AS 'CSD Flagged',
+	CASE WHEN [athena_to_s3_responsible_adults.csv].[zoneerror] = 'TRUE' THEN 1 ELSE 0 END AS 'csd flagged',
 	[athena_to_s3_customfields_data.csv].[addressstatus],
 	[athena_to_s3_customfields_data.csv].[verbal status confirmation],
 	[athena_to_s3_responsible_adults.csv].[rfscompleted], 
