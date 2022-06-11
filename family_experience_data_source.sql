@@ -70,6 +70,13 @@ SELECT
 		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221', ' or ', [athena_to_s3_scholar_data.csv].[appnum], '-SA222')
 		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND ([athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K')) THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221', ' or ', [athena_to_s3_scholar_data.csv].[appnum], '-SA223')
 		END AS "Uniform Promo Code",
+	CASE
+		WHEN ([gender] LIKE 'Female') THEN CONCAT('https://www.frenchtoast.com/girlskit')
+		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT('https://www.frenchtoast.com/boysKkit')
+		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K') THEN CONCAT('https://www.frenchtoast.com/boys1-4kit')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT('https://www.frenchtoast.com/girlskit', ' or ', 'https://www.frenchtoast.com/boysKkit')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND ([athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K')) THEN CONCAT('https://www.frenchtoast.com/girlskit', ' or ', 'https://www.frenchtoast.com/boys1-4kit')
+		END AS "Uniform Website URL",
 	[athena_to_s3_customfields_data.csv].[registration invited],
 	[athena_to_s3_customfields_data.csv].[registration attended],
 	[athena_to_s3_customfields_data.csv].[dress rehearsal invited],
