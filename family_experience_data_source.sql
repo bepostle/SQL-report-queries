@@ -63,6 +63,13 @@ SELECT
 	[athena_to_s3_responsible_adults.csv].[rfsinvited],
 	[athena_to_s3_customfields_data.csv].[uniform fitting invited],
 	[athena_to_s3_customfields_data.csv].[uniform fitting attended],
+	CASE
+		WHEN ([gender] LIKE 'Female') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221')
+		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA222')
+		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA223')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221', ' or ', [athena_to_s3_scholar_data.csv].[appnum], '-SA222')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND ([athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K')) THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221', ' or ', [athena_to_s3_scholar_data.csv].[appnum], '-SA223')
+		END AS "Uniform Promo Code",
 	[athena_to_s3_customfields_data.csv].[registration invited],
 	[athena_to_s3_customfields_data.csv].[registration attended],
 	[athena_to_s3_customfields_data.csv].[dress rehearsal invited],
