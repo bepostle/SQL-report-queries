@@ -11,7 +11,7 @@ SELECT
 	[athena_to_s3_scholar_data.csv].[enrollverified],
 	[athena_to_s3_scholar_data.csv].[istransferring],
 	[currentschool],
-	[athena_to_s3_enrolled_siblings.csv].[enrolledschoolcode] AS "enrolled sibling school",
+/*	[athena_to_s3_enrolled_siblings.csv].[enrolledschoolcode] AS "enrolled sibling school", */
 	[appdate],
 	[uberapplicationlate],
 	[applicationstatus],
@@ -40,7 +40,7 @@ SELECT
 	[athena_to_s3_responsible_adults.csv].[responsibleadultid],
 	[athena_to_s3_responsible_adults.csv].[firstname] AS "parent first name",
 	[athena_to_s3_responsible_adults.csv].[lastname] AS "parent last name",
-	[athena_to_s3_family_members.csv].[relationship],
+/*	[athena_to_s3_family_members.csv].[relationship], */
 	[athena_to_s3_responsible_adults.csv].[email],
 	[athena_to_s3_responsible_adults.csv].[cellphone],
 	[athena_to_s3_responsible_adults.csv].[homephone],
@@ -71,11 +71,11 @@ SELECT
 		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND ([athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K')) THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221', ' or ', [athena_to_s3_scholar_data.csv].[appnum], '-SA223')
 		END AS "Uniform Promo Code",
 	CASE
-		WHEN ([gender] LIKE 'Female') THEN CONCAT('https://www.frenchtoast.com/girlskit')
-		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT('https://www.frenchtoast.com/boysKkit')
-		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K') THEN CONCAT('https://www.frenchtoast.com/boys1-4kit')
-		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT('https://www.frenchtoast.com/girlskit', ' or ', 'https://www.frenchtoast.com/boysKkit')
-		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND ([athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K')) THEN CONCAT('https://www.frenchtoast.com/girlskit', ' or ', 'https://www.frenchtoast.com/boys1-4kit')
+		WHEN ([gender] LIKE 'Female') THEN CONCAT('https://bit.ly/38OaXSF')
+		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT('https://bit.ly/3LGUv4f')
+		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K') THEN CONCAT('https://bit.ly/3wNfrRu')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT('https://bit.ly/38OaXSF', ' or ', 'https://bit.ly/3LGUv4f')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND ([athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K')) THEN CONCAT('https://bit.ly/38OaXSF', ' or ', 'https://bit.ly/3wNfrRu')
 		END AS "Uniform Website URL",
 	[athena_to_s3_customfields_data.csv].[registration invited],
 	[athena_to_s3_customfields_data.csv].[registration attended],
@@ -94,8 +94,8 @@ SELECT
 FROM [CSV1].[athena_to_s3_scholar_data.csv]
 LEFT JOIN [CSV1].[athena_to_s3_responsible_adults.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].responsibleadultid = [CSV1].[athena_to_s3_responsible_adults.csv].responsibleadultid 
 LEFT JOIN [CSV1].[athena_to_s3_customfields_data.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].childid = [CSV1].[athena_to_s3_customfields_data.csv].childid 
-LEFT JOIN [CSV1].[athena_to_s3_family_members.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].familyid = [CSV1].[athena_to_s3_family_members.csv].familyid
-LEFT JOIN [CSV1].[athena_to_s3_enrolled_siblings.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].childid = [CSV1].[athena_to_s3_enrolled_siblings.csv].childid
+/* LEFT JOIN [CSV1].[athena_to_s3_family_members.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].familyid = [CSV1].[athena_to_s3_family_members.csv].familyid */
+/* LEFT JOIN [CSV1].[athena_to_s3_enrolled_siblings.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].childid = [CSV1].[athena_to_s3_enrolled_siblings.csv].childid */
 ORDER BY [athena_to_s3_scholar_data.csv].appdate DESC;
 
 
