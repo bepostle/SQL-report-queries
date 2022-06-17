@@ -12,7 +12,7 @@ SELECT
 	[athena_to_s3_scholar_data.csv].[istransferring],
 	[currentschool],
 /*	[athena_to_s3_enrolled_siblings.csv].[enrolledschoolcode] AS "enrolled sibling school", */
-	[appdate],
+	LEFT([athena_to_s3_scholar_data.csv].[appdate], 10) AS "appdate",
 	[uberapplicationlate],
 	[applicationstatus],
 	[bestcurrentstatus],
@@ -22,7 +22,8 @@ SELECT
 	[acceptedschoolcode],
 	[acceptedschooladminadded],
 	[acceptedschoolrank],
-	[currentaccepteddate],
+	LEFT([athena_to_s3_scholar_data.csv].[currentaccepteddate], 10) AS "currentaccepteddate",
+	LEFT([athena_to_s3_scholar_data.csv].[firstacceptdate], 10) AS "firstacceptdate",
 	[firstacceptdate],
 	[highestrankschoolname],
 	[applyingtoschoolany],
