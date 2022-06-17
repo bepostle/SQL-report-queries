@@ -24,7 +24,6 @@ SELECT
 	[acceptedschoolrank],
 	LEFT([athena_to_s3_scholar_data.csv].[currentaccepteddate], 10) AS "currentaccepteddate",
 	LEFT([athena_to_s3_scholar_data.csv].[firstacceptdate], 10) AS "firstacceptdate",
-	[firstacceptdate],
 	[highestrankschoolname],
 	[applyingtoschoolany],
 	[appclosedate],
