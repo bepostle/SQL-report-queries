@@ -4,6 +4,8 @@ SELECT
 	applicationstatus,
 	gradeabbrev,
 	childid,
+	enrolledschoolname,
+	reopendate,
 	[athena_to_s3_scholar_data.csv].responsibleadultid,
 	[athena_to_s3_responsible_adults.csv].email,
 	utm_source,
