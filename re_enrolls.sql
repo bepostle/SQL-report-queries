@@ -1,3 +1,4 @@
+/* This query is saved as a derived view in CData as ReEnrolls_SY22 and can be uploaded to the ReEnrolls workbook by exporting as a CSV in CData*/
 SELECT 
 	[athena_to_s3_customfields_data.csv]."migratory eSD ID" AS "eSD ID",
 	[athena_to_s3_scholar_data.csv].firstname AS "Scholar Firstname",
