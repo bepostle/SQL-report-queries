@@ -35,7 +35,6 @@ SELECT
 	[isreopened],
 	[reopendate],
 	[source],
-	[uberapplicationlate],
 	[athena_to_s3_scholar_data.csv].[familyid],
 	[athena_to_s3_scholar_data.csv].[familynum],
 	[athena_to_s3_responsible_adults.csv].[responsibleadultid],
