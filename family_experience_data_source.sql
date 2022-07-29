@@ -30,6 +30,7 @@ SELECT
 	[closerequest],
 	[closerequestdate],
 	[importedscholarid],
+	[athena_to_s3_customfields_data.csv].[migratory esd id],
 	[isapplying],
 	[isreopened],
 	[reopendate],
@@ -97,14 +98,3 @@ LEFT JOIN [CSV1].[athena_to_s3_customfields_data.csv] ON [CSV1].[athena_to_s3_sc
 /* LEFT JOIN [CSV1].[athena_to_s3_family_members.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].familyid = [CSV1].[athena_to_s3_family_members.csv].familyid */
 /* LEFT JOIN [CSV1].[athena_to_s3_enrolled_siblings.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].childid = [CSV1].[athena_to_s3_enrolled_siblings.csv].childid */
 ORDER BY [athena_to_s3_scholar_data.csv].appdate DESC;
-
-
-
-
-
-
-
-
-
-
-
