@@ -2,6 +2,7 @@ SELECT
 	appdate,
 	appnum,
 	applicationstatus,
+	acceptedschoolcode,
 	gradeabbrev,
 	childid,
 	enrolledschoolname,
