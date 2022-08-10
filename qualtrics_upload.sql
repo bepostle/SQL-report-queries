@@ -11,6 +11,10 @@ SELECT
 	[athena_to_s3_responsible_adults.csv].[firstname] AS "Parent First Name",
 	[athena_to_s3_responsible_adults.csv].[lastname] AS "Parent Last Name",
 	[athena_to_s3_responsible_adults.csv].[email] AS "Parent Email",
+	CASE
+			WHEN ([language] LIKE 'English') THEN 'EN'
+			WHEN ([language] LIKE 'Español') THEN 'ES'
+			END AS "Application Language",
 	[athena_to_s3_responsible_adults.csv].[homephone] AS "Primary Phone",
 	[athena_to_s3_responsible_adults.csv].[cellphone] AS "Cell Phone",
 	[athena_to_s3_scholar_data.csv].[appnum] AS "Conf Number",
