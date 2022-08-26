@@ -37,7 +37,7 @@ SELECT
 	[athena_to_s3_responsible_adults.csv].[responsibleadultid] AS "Responsible Adult ID",
 	[athena_to_s3_scholar_data.csv].[applicationstatus] AS "Application Status",
 	LEFT([athena_to_s3_scholar_data.csv].[firstacceptdate], 10) AS "First Accepted Date",
-	[athena_to_s3_scholar_data.csv].[acceptedschoolcode] AS "Accepted School",
+	[athena_to_s3_scholar_data.csv].[acceptedschoolcode] AS "Accepted School Name",
 	[athena_to_s3_scholar_data.csv].[applyingtoschoolany] AS "Applying to School (Rank)",
 	[athena_to_s3_scholar_data.csv].[acceptedschoolrank] AS "Accepted School Rank",
 	[athena_to_s3_scholar_data.csv].[firstengageddate] AS "First Engaged Date",
@@ -45,6 +45,13 @@ SELECT
 	[athena_to_s3_scholar_data.csv].[bestpullstatus] AS "Best Pull Status",
 	[athena_to_s3_scholar_data.csv].[bestcurrentstatus] AS "Best Current Status",
 	[athena_to_s3_responsible_adults.csv].[rfscompleted] AS "RFS Completed",
+	CASE
+		WHEN ([gender] LIKE 'Female') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221')
+		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA222')
+		WHEN ([gender] LIKE 'Male' AND [athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA223')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND [athena_to_s3_scholar_data.csv].[gradeabbrev] LIKE 'K') THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221', ' or ', [athena_to_s3_scholar_data.csv].[appnum], '-SA222')
+		WHEN (([gender] LIKE 'Prefer not to answer' OR [gender] LIKE 'Non-binary') AND ([athena_to_s3_scholar_data.csv].[gradeabbrev] NOT LIKE 'K')) THEN CONCAT([athena_to_s3_scholar_data.csv].[appnum], '-SA221', ' or ', [athena_to_s3_scholar_data.csv].[appnum], '-SA223')
+		END AS "Uniform Promo Code",
 FROM [CSV1].[athena_to_s3_scholar_data.csv]
 LEFT JOIN [CSV1].[athena_to_s3_responsible_adults.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].responsibleadultid = [CSV1].[athena_to_s3_responsible_adults.csv].responsibleadultid
 LEFT JOIN [CSV1].[athena_to_s3_customfields_data.csv] ON [CSV1].[athena_to_s3_scholar_data.csv].childid = [CSV1].[athena_to_s3_customfields_data.csv].childid
