@@ -22,7 +22,18 @@ SELECT
 	[athena_to_s3_responsible_adults.csv].[schooldistrict] AS "School District",
 	[athena_to_s3_scholar_data.csv].[lastname] AS "Child Last Name",
 	[athena_to_s3_scholar_data.csv].[firstname] AS "Child First Name",
-	[athena_to_s3_scholar_data.csv].[gradeabbrev] AS "Entering Grade",
+	CASE
+		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘K’) THEN ‘kindergarten’
+		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘1’) THEN ‘first grade’
+		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘2’) THEN ‘second grade’
+		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘3’) THEN ‘third grade’
+		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘4’) THEN ‘fourth grade’
+		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘K’) THEN ‘Kinder’
+		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘1’) THEN ‘primer grado’
+		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘2’) THEN ‘segundo grado’
+		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘3’) THEN ‘tercero grado’
+		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘4’) THEN ‘cuarto grado’
+		END AS “Entering Grade 2”,
 	LEFT([athena_to_s3_scholar_data.csv].[appdate], 10) AS "Application Date",
 	[athena_to_s3_scholar_data.csv].[isell] AS "ELL",
 	[athena_to_s3_responsible_adults.csv].[street] AS "Street",
