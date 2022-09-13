@@ -22,6 +22,7 @@ SELECT
 	[athena_to_s3_responsible_adults.csv].[schooldistrict] AS "School District",
 	[athena_to_s3_scholar_data.csv].[lastname] AS "Child Last Name",
 	[athena_to_s3_scholar_data.csv].[firstname] AS "Child First Name",
+	[athena_to_s3_scholar_data.csv].[gradeabbrev],
 	CASE
 		WHEN ([language] LIKE 'English' AND [gradeabbrev] LIKE 'K') THEN 'kindergarten'
 		WHEN ([language] LIKE 'English' AND [gradeabbrev] LIKE '1') THEN 'first grade'
