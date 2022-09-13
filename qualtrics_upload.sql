@@ -23,17 +23,17 @@ SELECT
 	[athena_to_s3_scholar_data.csv].[lastname] AS "Child Last Name",
 	[athena_to_s3_scholar_data.csv].[firstname] AS "Child First Name",
 	CASE
-		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘K’) THEN ‘kindergarten’
-		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘1’) THEN ‘first grade’
-		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘2’) THEN ‘second grade’
-		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘3’) THEN ‘third grade’
-		WHEN ([language] LIKE ‘English’ AND [gradeabbrev] LIKE ‘4’) THEN ‘fourth grade’
-		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘K’) THEN ‘Kinder’
-		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘1’) THEN ‘primer grado’
-		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘2’) THEN ‘segundo grado’
-		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘3’) THEN ‘tercero grado’
-		WHEN ([language] LIKE ‘Español’ AND [gradeabbrev] LIKE ‘4’) THEN ‘cuarto grado’
-		END AS “Entering Grade 2”,
+		WHEN ([language] LIKE 'English' AND [gradeabbrev] LIKE 'K') THEN 'kindergarten'
+		WHEN ([language] LIKE 'English' AND [gradeabbrev] LIKE '1') THEN 'first grade'
+		WHEN ([language] LIKE 'English' AND [gradeabbrev] LIKE '2') THEN 'second grade'
+		WHEN ([language] LIKE 'English' AND [gradeabbrev] LIKE '3') THEN 'third grade'
+		WHEN ([language] LIKE 'English' AND [gradeabbrev] LIKE '4') THEN 'fourth grade'
+		WHEN ([language] LIKE 'Español' AND [gradeabbrev] LIKE 'K') THEN 'Kinder'
+		WHEN ([language] LIKE 'Español' AND [gradeabbrev] LIKE '1') THEN 'primer grado'
+		WHEN ([language] LIKE 'Español' AND [gradeabbrev] LIKE '2') THEN 'segundo grado'
+		WHEN ([language] LIKE 'Español' AND [gradeabbrev] LIKE '3') THEN 'tercero grado'
+		WHEN ([language] LIKE 'Español' AND [gradeabbrev] LIKE '4') THEN 'cuarto grado'
+		END AS "Entering Grade 2",
 	LEFT([athena_to_s3_scholar_data.csv].[appdate], 10) AS "Application Date",
 	[athena_to_s3_scholar_data.csv].[isell] AS "ELL",
 	[athena_to_s3_responsible_adults.csv].[street] AS "Street",
@@ -47,6 +47,7 @@ SELECT
 	[athena_to_s3_scholar_data.csv].[highestrankschoolname] AS "Highest Rank School",
 	[athena_to_s3_responsible_adults.csv].[responsibleadultid] AS "Responsible Adult ID",
 	[athena_to_s3_scholar_data.csv].[applicationstatus] AS "Application Status",
+	LEFT([athena_to_s3_scholar_data.csv].[currentaccepteddate], 10) AS "Current Accepted Date",
 	LEFT([athena_to_s3_scholar_data.csv].[firstacceptdate], 10) AS "First Accepted Date",
 	[athena_to_s3_scholar_data.csv].[acceptedschoolcode] AS "Accepted School Name",
 	[athena_to_s3_scholar_data.csv].[applyingtoschoolany] AS "Applying to School (Rank)",
