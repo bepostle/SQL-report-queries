@@ -1,5 +1,6 @@
 SELECT 
 	[athena_to_s3_scholar_data.csv].[appnum] AS "conf",
+	[athena_to_s3_scholar_data.csv].[childid],
 	[athena_to_s3_scholar_data.csv].[firstname] AS "child first name",
 	[athena_to_s3_scholar_data.csv].[lastname] AS "child last name",
 	[enrolledschoolname],
